@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gw.ken.myb.dao.UserMapper">
+    <!--插入-->
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        insert into user(name, age, email) values(#{name}, #{age}, #{email})
+    </insert>
+    <!--查询-->
+    <select id="getUserById" resultMap="userMap">
+        select * from user where id = #{id}
+    </select>
+    <!--Java对象字段与数据库表字段的映射-->
+    <resultMap id="userMap" type="com.gw.ken.myb.model.User">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="age" column="age"></result>
+        <result property="email" column="email"></result>
+
+    </resultMap>
+</mapper>
